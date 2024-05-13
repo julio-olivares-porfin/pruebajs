@@ -1,8 +1,8 @@
-const updateAmountDisplay = (amount) =>{
+const actualizarCantidadDisplay = (amount) =>{
   document.querySelector('#show-currency').textContent = amount.toFixed(2)
 }
 
-const renderCurrencyOptions = () =>{
+const renderDivisaOptions = () =>{
   const currencySelect = document.querySelector('#currency')
   const currencies = ['Dolar', 'UF', 'UTM', 'Euro']
   currencies.forEach(currency => {
@@ -13,7 +13,7 @@ const renderCurrencyOptions = () =>{
   })
 }
 
-const renderChart = (data) =>{
+const renderGrafico = (data) =>{
   const graphicCanvas = document.querySelector('#graphic')
   const ctx = graphicCanvas.getContext('2d')
 
@@ -50,11 +50,11 @@ const renderChart = (data) =>{
 }
 
 
-const updateCurrencySymbol = (symbol) =>{
+const actualizarSimboloDivisa = (symbol) =>{
   document.querySelector('#currency-symbol').textContent = symbol
 }
 
-const initAmountInput = () =>{
+const iniciarEntradaCantidad = () =>{
   const amountInput = document.querySelector('#amount-input')
 
   amountInput.addEventListener('input', ()=>{
@@ -67,4 +67,4 @@ const initAmountInput = () =>{
   })
 }
 
-export {updateAmountDisplay, renderCurrencyOptions, renderChart, updateCurrencySymbol, initAmountInput}
+export {actualizarCantidadDisplay, renderDivisaOptions, renderGrafico, actualizarSimboloDivisa, iniciarEntradaCantidad}

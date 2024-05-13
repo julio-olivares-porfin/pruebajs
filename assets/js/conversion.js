@@ -1,8 +1,8 @@
 import { fetchData } from './api.js'
 
-const convertToCurrency = async (amount, currency) => {
+const convertirADivisa = async (amount, currency) => {
   try {
-    const exchangeRate = await getExchangeRate(currency)
+    const exchangeRate = await obtenerTasaDeCambio(currency)
     const convertedAmount = amount / exchangeRate
     return convertedAmount
   } catch (error) {
@@ -10,7 +10,7 @@ const convertToCurrency = async (amount, currency) => {
   }
 }
 
-const getExchangeRate = async (currency) => {
+const obtenerTasaDeCambio = async (currency) => {
   try {
     const data = await fetchData(currency.toLowerCase())
     const exchangeRate = data.serie[0].valor
@@ -20,7 +20,7 @@ const getExchangeRate = async (currency) => {
   }
 }
 
-const getVariationForCurrency = async (currency) => {
+const obtenerVariacionDivisa = async (currency) => {
   try {
     const data = await fetchData(currency.toLowerCase())
     const variation = data.serie.slice(0, 10).map(entry => entry.valor)
@@ -32,4 +32,4 @@ const getVariationForCurrency = async (currency) => {
 }
 
 
-export { convertToCurrency, getExchangeRate, getVariationForCurrency }
+export { convertirADivisa, obtenerTasaDeCambio, obtenerVariacionDivisa }
