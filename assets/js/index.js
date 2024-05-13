@@ -2,50 +2,50 @@ import { actualizarCantidadDisplay, renderGrafico, actualizarSimboloDivisa, inic
 import { convertirADivisa, obtenerVariacionDivisa } from './conversion.js'
 
 document.addEventListener('DOMContentLoaded', () => {
-  const convertButton = document.querySelector('#convert-button')
-  const amountInput = document.querySelector('#amount-input')
-  const currencySelect = document.querySelector('#currency')
+  const botonConvertir = document.querySelector('#convert-button')
+  const montoInput = document.querySelector('#amount-input')
+  const seleccionarDivisa = document.querySelector('#currency')
 
   renderDivisaOptions()
 
-  convertButton.addEventListener('click', async () => {
-    const amount = parseFloat(amountInput.value)
-    const selectedCurrency = currencySelect.value
+  botonConvertir.addEventListener('click', async () => {
+    const monto = parseFloat(montoInput.value)
+    const divisaSeleccionada = seleccionarDivisa.value
 
-    if (isNaN(amount) || amount <= 0) {
+    if (isNaN(monto) || monto <= 0) {
       alert('Ingresa un monto en pesos chilenos')
       return
     }
 
     try {
-      const convertedAmount = await convertirADivisa(amount, selectedCurrency)
-      actualizarCantidadDisplay(convertedAmount)
+      const montoConvertido = await convertirADivisa(monto, divisaSeleccionada)
+      actualizarCantidadDisplay(montoConvertido)
 
-      const variationData = await obtenerVariacionDivisa(selectedCurrency)
-      renderGrafico(variationData)
+      const variacionData = await obtenerVariacionDivisa(divisaSeleccionada)
+      renderGrafico(variacionData)
 
-      const labels = variationData.labels.map(date => {
+      const labels = variacionData.labels.map(date => {
         const formattedDate = new Date(date);
         return formattedDate.toLocaleDateString('es-CL', { day: '2-digit', month: '2-digit', year: 'numeric' });
       })
 
-      renderGrafico({ variation: variationData.variation, labels })
+      renderGrafico({ variation: variacionData.variation, labels })
 
       let currencySymbol
-      if (selectedCurrency === 'Dolar') {
+      if (divisaSeleccionada === 'Dolar') {
         currencySymbol = '$'
-      } else if (selectedCurrency === 'UF') {
+      } else if (divisaSeleccionada === 'UF') {
         currencySymbol = 'UF'
-      } else if (selectedCurrency === 'UTM') {
+      } else if (divisaSeleccionada === 'UTM') {
         currencySymbol = 'UTM'
-      } else if (selectedCurrency === 'Euro') {
+      } else if (divisaSeleccionada === 'Euro') {
         currencySymbol = '€'
       }
       actualizarSimboloDivisa(currencySymbol)
 
     } catch (error) {
-      console.error(`Error al convertir a ${selectedCurrency}`, error)
-      alert(`Hubo un error al convertir a ${selectedCurrency}. Por favor, intenta de nuevo más tarde`)
+      console.error(`Error al convertir a ${divisaSeleccionada}`, error)
+      alert(`Hubo un error al convertir a ${divisaSeleccionada}. Por favor, intenta de nuevo más tarde`)
     }
   })
 
