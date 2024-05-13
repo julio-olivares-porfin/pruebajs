@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de Peso Chileno</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="header">
+    <h1 class="header-title">Conversor de Pesos Chilenos</h1>
+  </header>
+  <main>
+    <div class="seccion-conversion columna" id="conversion-section">
+      <div class="contenedor-principal">
+        <div id="amount-section" class="cantidad-seccion columna">
+          <div class="cantidad-input-container columna" id="amount-input-container">
+            <label for="amount">Ingresa un monto</label>
+            <input type="number" id="amount-input" class="cantidad-input" name="amount" placeholder="Pesos Chilenos">
+          </div>
+          <div id="show-amount-container" class="mostrar-cantidad-container fila">
+            <h2>$</h2>
+            <h2 id="show-amount" class="mostrar-cantidad">0</h2>
+          </div>
+        </div>
+        <div id="currency-section" class="divisa-seccion columna">
+          <div class="divisa-select-container columna">
+            <label for="currency">Selecciona una moneda/valor</label>
+            <select name="currency" id="currency" class="divisa-select">
+            </select>
+          </div>
+          <div id="show-currency-container" class="mostrar-divisa-container fila">
+            <h2 id="currency-symbol">-</h2>
+            <h2 id="show-currency" class="mostrar-divisa">-</h2>
+          </div>
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="submit" id="convert-button" class="convertir-button">
+          Convertir
+        </button>
+      </div>
+    </div>
+    <div id="graphic-section" class="seccion-grafico columna">
+      <div id="graphic-container" class="contenedor-grafico">
+        <h3>Variación de la moneda/valor</h3>
+        <canvas id="graphic"></canvas>
+      </div>
+    </div>
+    <div class="pie-meme">
+      <img src="./assets/img/meme.jpg" alt="shut up and take my money">
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="assets/js/api.js"></script>
+  <script type="module" src="assets/js/conversion.js"></script>
+  <script type="module" src="assets/js/ui.js"></script>
+  <script type="module" src="assets/js/index.js"></script>
+</body>
+</html>
