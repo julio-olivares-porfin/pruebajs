@@ -1,4 +1,4 @@
-import { updateAmountDisplay, renderChart, updateCurrencySymbol, initAmountInput, renderCurrencyOptions } from './ui.js'
+import { updateAmountDisplay, renderChart, updateCurrencySymbol, initAmountInput, renderCurrencyOptions } from './front.js'
 import { convertToCurrency, getVariationForCurrency } from './conversion.js'
 
 document.addEventListener('DOMContentLoaded', () => {
