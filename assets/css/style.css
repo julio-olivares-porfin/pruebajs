@@ -11,6 +11,11 @@ body {
   background-color: #F9F7F7;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 .fila {
   display: flex;
   flex-wrap: wrap;
@@ -24,6 +29,9 @@ body {
 
 .header {
   margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .header-title {
@@ -35,6 +43,11 @@ body {
   gap: 1rem;
   padding: 1rem;
   grid-area: conversion;
+  background-color: #767676;
+  border: 2px solid #000000;
+  color: #ffffff;
+  width: 500px;
+  margin-left: 10px;
 }
 
 .contenedor-principal {
@@ -44,11 +57,7 @@ body {
 }
 
 .cantidad-seccion, .divisa-seccion {
-  gap: 2rem;
-  background-color: #767676;
-  padding: 2rem 1rem 3rem;
-  border: 2px solid #000000;
-  color: #ffffff;
+  gap: 1rem;
 }
 
 .cantidad-input-container, .divisa-select-container {
@@ -113,10 +122,10 @@ option {
 }
 
 .pie-meme {
-  display: flex;
-  justify-content: center;
-  height: 281px;
-  grid-area: meme;
+    width: 460px; /* ajusta el ancho según sea necesario */
+    height: 281px; /* ajusta la altura según sea necesario */
+    overflow: hidden; /* asegura que la parte de la imagen fuera del contenedor no se muestre */
+    position: center; /* para posicionar la máscara absolutamente con respecto al contenedor */
 }
 
 
@@ -126,13 +135,10 @@ option {
 @media (min-width: 1024px) {
   main {
     display: grid;
-    min-height: 100vh;
     padding: 2rem 0;
     grid-template-areas:
-    "conversion grafico"
-    "meme meme";
-    grid-template-columns: 400px calc(100vw - 400px);
-    grid-template-rows: calc(100vh - 281px) 281px;
+    "conversion grafico";
+    grid-template-columns: 600px calc(100vw - 600px);
   }
 
   canvas {
